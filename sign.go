@@ -204,9 +204,12 @@ func writeAmzHeaders(w io.Writer, r *http.Request) {
 	for k, v := range r.Header {
 		k = strings.ToLower(k)
 		if strings.HasPrefix(k, "x-amz-") {
-			amzHeader[k] = v
-			keys = append(keys, k)
+			amzHeader[k] = append(amzHeader[k], v...)
 		}
+	}
+
+	for k := range amzHeader {
+		keys = append(keys, k)
 	}
 
 	sort.Strings(keys)
