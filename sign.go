@@ -19,6 +19,7 @@ import (
 
 var signParams = map[string]bool{
 	"acl":                          true,
+	"cors":                         true,
 	"delete":                       true,
 	"lifecycle":                    true,
 	"location":                     true,
